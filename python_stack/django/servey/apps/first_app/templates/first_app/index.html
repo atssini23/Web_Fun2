@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Servey</title>
+  </head>
+  <body>
+
+    <form class="" action="/result" method="post">
+      {% csrf_token %}
+      Your Name:<input type="text" name="name" value=''><br>
+      Dojo Location:
+      <select name='city'>
+        <option value="Seattle">Seattle</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Seattle">Seattle</option>
+      </select><br>
+      Favorite Language:
+      <select name='language'>
+        <option value="Python">Python</option>
+        <option value="Python">Python</option>
+        <option value="Python">Python</option>
+      </select><br>
+      Comments:<input type="textarea" name="comment" value=""><br>
+      <input type="submit" name="" value="Submit"><br>
+    </form>
+
+  </body>
+</html>

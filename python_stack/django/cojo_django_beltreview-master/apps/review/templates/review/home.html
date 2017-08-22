@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Friends</title>
+    {% load staticfiles %}
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Hello, {{ alias }}!</h1>
+      <a href="{% url 'review:addbook' %}">Add Book and Review</a>
+      <a href="{% url 'login:logout' %}">Logout</a>
+      <div id="recent">
+        <h2>Here is the list of your friends:</h2>
+        {% for review in recent_reviews %}
+          <h3><a href="{% url 'review:thisbook' bookid=review.book.id %}">{{ review.book.title }}
+          </a></h3>
+          <p>Rating:
+            {% for i in 'x'|rjust:review.rating %}
+              <span>* </span>
+            {% endfor %}</p>
+          <p><a href="{% url 'review:thisuser' userid=review.creator.id %}">{{ review.creator.alias }}
+          </a> says: <span class="review">{{ review.content }}</span></p>
+          <p class="footnote">Posted on {{ review.created_at|date:'F j, Y' }}</p>
+        {% endfor %}
+      </div>
+      <div id="others">
+        <h2>All Books with Reviews:</h2>
+        <ul class="scrollable">
+          {% for book in books %}
+            <li><a href="{% url 'review:thisbook' bookid=book.id %}">{{ book.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

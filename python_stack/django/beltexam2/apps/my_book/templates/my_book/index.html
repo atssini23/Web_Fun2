@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Blog</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        <a href="{% url 'mybook:index' %}">Home</a>
+        <a href="{% url 'mybook:addBlog' %}">Add Blog</a>
+        <a href="{% url 'login:logout' %}">Logout</a>
+    <h1>{{user.username}}'s Blogs</h1>
+    {% for blog in blogs %}
+    <div>
+        <h1>{{blog.title}}</h1>
+            Created: {{blog.created_at}}
+        <div>
+            {{blog.content}}<br>
+            {{blog.likes.all.count}} liked this!
+            {% if blog.user_id != user %}
+                <form action="{% url 'mybook:addLike' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="submit" value="submit">Like!</button>
+                    <input type="hidden" name="blog_id" value="{{blog.id}}">
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <h3></h3>
+    </body>
+</html>

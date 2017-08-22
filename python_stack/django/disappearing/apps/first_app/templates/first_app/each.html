@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Each Ninja</title>
+    <meta charset='utf-8' />
+       {% load staticfiles %}
+  </head>
+  <body>
+
+      {% if color == 'blue' %}
+
+          <img src="{% static 'first_app/img/leonardo.jpg' %}"/>
+      {% elif color == 'orange' %}
+
+          <img src="{% static 'first_app/img/michelangelo.jpg' %}"/>
+      {% elif color == 'red' %}
+
+          <img src="{% static 'first_app/img/raphael.jpg' %}"/>
+      {% elif color == 'purple' %}
+
+          <img src="{% static 'first_app/img/donatello.jpg' %}"/>
+      {% else %}
+          
+          <img src="{% static 'first_app/img/notapril.jpg' %}"/>
+      {% endif %}
+      <h4>{{ result }}</h4>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Add Book and Review</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <a href="{% url 'review:home' %}">Home</a>
+      <a href="{% url 'login:logout' %}">Logout</a>
+      <form action="{% url 'review:add_book_now' %}" method="POST">
+      {% csrf_token %}
+        <h2>Add a New Book Title and a Review:</h2>
+        <label for="title">Book Title:</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author:</label>
+        <div id="author">
+          <label for="authorlist">Choose from the list:</label>
+          <select name="authorlist" id="authorlist">
+            {% for each in authors %}
+              <option value="{{ each.name }}">{{ each.name }}</option>
+            {% endfor %}
+          </select>
+          <label for="newauthor">Or add a new author:</label>
+          <input type="text" id="newauthor" name="newauthor">
+        </div>
+        <label for="content">Review:</label>
+        <textarea name="content" id="content" cols="50" rows="6"></textarea>
+        <label for="rating">Rating:</label>
+        <input id="rating" name="rating" type="number" value="5" step="1" min="1" max="5">
+        <button type="submit" name="submit" id="submit">Add Book and Review</button>
+      </form>
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

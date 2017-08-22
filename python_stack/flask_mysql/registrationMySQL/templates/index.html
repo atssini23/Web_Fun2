@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Email</title>
+  </head>
+  <body>
+    <form class="" action="/submit" method="post">
+
+      Email<input type="text" name="email" placeholder="Email" value="{{email}}"><br>
+
+          <div class="">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p>{{message}}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+          </div>
+      <input type="submit" value="Submit!">
+
+    </form>
+  </body>
+</html>

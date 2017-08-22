@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <form action="{% url 'login:validate' %}" method="POST">
+    {% csrf_token %}
+      <fieldset name="register" value="register">
+        <legend>Register</legend>
+        <label for="reg_name">Name:</label>
+        <input type="text" id="reg_name" name="reg_name">
+        <label for="alias">Alias:</label>
+        <input type="text" id="reg_alias" name="reg_alias">
+        <label for="reg_email">Email:</label>
+        <input type="text" id="reg_email" name="reg_email">
+        <label for="reg_password">Password:</label>
+        <input type="password" id="reg_password" name="reg_password">
+        <p>*Password should be at least eight characters.</p>
+        <label for="reg_confirm">Confirm Password:</label>
+        <input type="password" id="reg_confirm" name="reg_confirm">
+        <button type="submit" name="submit" value="register">Register</button>
+      </fieldset>
+      <fieldset name="login" value="login">
+        <legend>Login</legend>
+        <label for="log_email">Email:</label>
+        <input type="text" id="log_email" name="log_email">
+        <label for="log_password">Password:</label>
+        <input type="password" id="log_password" name="log_password">
+        <button type="submit" name="submit" value="login">Login</button>
+      </fieldset>
+    </form>
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  </body>
+</html>

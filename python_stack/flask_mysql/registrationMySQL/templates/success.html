@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <td>Email</td>
+
+          <td>Since</td>
+        </tr>
+      </thead>
+      <tbody>
+        {%for email in emails%}
+        <tr>
+          <td>{{email.email}}</td>
+
+          <td>{{email.created_at}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Result</title>
+  </head>
+  <body>
+    <h1>Submitted Info</h1>
+    {% csrf_token %}
+     <p>Name: {{ request.session.name }}</p>
+     <p>Dojo Location: {{ request.session.city }}</p>
+     <p>Favorite Language: {{ request.session.language }}</p>
+     <p>Commnet: {{ request.session.comment }}</p>
+     <div>
+       <form class="" action="/" method="post">
+        {% csrf_token %}
+         <input type="submit" name="" value="Go Back">
+
+       </form>
+     </div>
+  </body>
+</html>

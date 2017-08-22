@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <form action="{% url 'mybook:addBlog' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter Blog Title" autofocus><br>
+            <textarea name="content" rows="5" cols="50"></textarea><br>
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            <button type="submit" name="submit" value="submit">Add!</button>
+        </form>    
+    </body>
+</html>
